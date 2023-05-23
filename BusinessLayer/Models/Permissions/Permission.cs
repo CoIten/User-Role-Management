@@ -4,13 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BusinessLayer.Models
+namespace BusinessLayer.Models.Permissions
 {
-    public class Role
+    public class Permission
     {
         public int Id { get; set; }
         public string Name { get; set; }
-
-        public ICollection<UserRole> UserRoles { get; set; }
+        public string Description { get; set; }
     }
 }

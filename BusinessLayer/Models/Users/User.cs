@@ -16,6 +16,5 @@ namespace BusinessLayer.Models.Users
         public string PasswordSalt { get; set; }
         public string HashedPassword { get; set; }
         public string Email { get; set; }
-
     }
 }

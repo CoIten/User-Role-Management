@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.Services
 {
-    public class RoleService :IRoleService
+    public class RoleService : IRoleService
     {
         private readonly IRoleRespsitory _roleRepository;
 
-        public RoleService(IRoleRepository roleRepository)
+        public RoleService(IRoleReposiory roleRepository)
         {
             _roleRepository = roleRepository;
         }

@@ -1,3 +1,4 @@
+using DataAccess.Repositories;
 using PayVortex;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,7 +11,14 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddCustomerServices();
+builder.Services.AddDbContext<DataContext>();
 var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    var dbContext = services.GetRequiredService<DataContext>();
+}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

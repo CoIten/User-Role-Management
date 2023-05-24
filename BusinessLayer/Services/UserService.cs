@@ -10,7 +10,7 @@ namespace BusinessLayer.Services
 {
     public class UserService : IUserService
     {
-        private readonly IUserRespsitory _userRepository;
+        private readonly IUserRepository _userRepository;
 
         public UserService(IUserRepository userRepository)
         {

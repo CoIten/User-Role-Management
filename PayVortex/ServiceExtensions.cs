@@ -1,5 +1,6 @@
 ﻿using BusinessLayer.Interfaces;
 using BusinessLayer.Services;
+using System.Security;
 
 namespace PayVortex
 {
@@ -9,6 +10,7 @@ namespace PayVortex
         {
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<IRoleService, RoleService>();
+            services.AddTransient<IPermissionService, PermissionService>();
 
             return services;
         }

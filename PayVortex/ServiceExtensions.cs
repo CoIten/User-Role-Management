@@ -1,5 +1,7 @@
 ﻿using BusinessLayer.Interfaces;
 using BusinessLayer.Services;
+using DataAccess.Implementations;
+using DataAccess.Repositories;
 
 namespace PayVortex
 {
@@ -7,10 +9,9 @@ namespace PayVortex
     {
         public static IServiceCollection AddBusinessLayerServices(this IServiceCollection services)
         {
-            services.AddTransient<IUserService, UserService>();
-            services.AddTransient<IRoleService, RoleService>();
-            services.AddTransient<IPermissionService, PermissionService>();
-
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IRoleRepository, RoleRepository>();
+            services.AddScoped<IPermissionRepository, PermissionRepository>();
             return services;
         }
     }

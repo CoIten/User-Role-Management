@@ -21,7 +21,7 @@ namespace DataAccess.Repositories
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // Configure entity relationships, indexes, etc.
+
         }
     }
 }

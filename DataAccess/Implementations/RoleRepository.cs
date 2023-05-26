@@ -1,5 +1,6 @@
 ﻿using BusinessLayer.Models.Roles;
 using DataAccess.Repositories;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,25 +11,39 @@ namespace DataAccess.Implementations
 {
     public class RoleRepository : IRoleRepository
     {
+        private readonly DataContext _dbContext;
+
+        public RoleRepository(DataContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
+
         public async Task<Role> GetRoleById(int roleId)
         {
-
+            return await _dbContext.Roles.FindAsync(roleId);
         }
         public async Task<List<Role>> GetAllRoles()
         {
-
+            return await _dbContext.Roles.ToListAsync();
         }
-        public void CreateRole(Role role)
+        public void CreateRole(Role Role)
         {
-
+            _dbContext.Roles.Add(Role);
+            _dbContext.SaveChanges();
         }
-        public void UpdateRole(Role role)
+        public void UpdateRole(Role Role)
         {
-
+            _dbContext.Roles.Update(Role);
+            _dbContext.SaveChanges();
         }
         public void DeleteRole(int roleId)
         {
-
+            var Role = _dbContext.Roles.FirstOrDefault(r => r.Id == roleId);
+            if (Role != null)
+            {
+                _dbContext.Roles.Remove(Role);
+                _dbContext.SaveChanges();
+            }
         }
     }
 }

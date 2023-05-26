@@ -1,5 +1,6 @@
 ﻿using BusinessLayer.Interfaces;
 using BusinessLayer.Models.Roles;
+using DataAccess.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,16 +11,16 @@ namespace BusinessLayer.Services
 {
     public class RoleService : IRoleService
     {
-        private readonly IRoleRespsitory _roleRepository;
+        private readonly IRoleRepository _roleRepository;
 
-        public RoleService(IRoleReposiory roleRepository)
+        public RoleService(IRoleRepository roleRepository)
         {
             _roleRepository = roleRepository;
         }
 
-        public Task<Role> GetRoleById(int RoleId)
+        public async Task<Role> GetRoleById(int roleId)
         {
-
+            return await _roleRepository.GetRoleById(roleId);
         }
 
         public void CreateRole(Role Role)
@@ -32,7 +33,7 @@ namespace BusinessLayer.Services
 
         }
 
-        public void DeleteRole(int RoleId)
+        public void DeleteRole(int roleId)
         {
 
         }

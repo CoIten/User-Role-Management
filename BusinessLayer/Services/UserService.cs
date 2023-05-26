@@ -1,5 +1,6 @@
 ﻿using BusinessLayer.Interfaces;
 using BusinessLayer.Models.Users;
+using DataAccess.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +21,7 @@ namespace BusinessLayer.Services
         public async Task<User> GetUserById(int userId)
         {
 
+            return await _userRepository.GetUserById(userId);
         }
         public void CreateUser(User user)
         {

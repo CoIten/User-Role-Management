@@ -18,11 +18,11 @@ namespace DataAccess.Implementations
         {
 
         }
-        public void CreateUser(User user)
+        public void CreateUser(User User)
         {
 
         }
-        public void UpdateUser(User user)
+        public void UpdateUser(User User)
         {
 
         }

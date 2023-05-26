@@ -11,8 +11,8 @@ namespace DataAccess.Repositories
     {
         public Task<User> GetUserById(int userId);
         public Task<List<User>> GetAllUsers();
-        public void CreateUser(User user);
-        public void UpdateUser(User user);
+        public void CreateUser(User User);
+        public void UpdateUser(User User);
         public void DeleteUser(int userId);
     }
 }

@@ -10,8 +10,8 @@ namespace DataAccess.Repositories
     public interface IUserRepository
     {
         public Task<User> GetUserById(int userId);
-        public Task<List<User>> GetAllUsers();
-        public void CreateUser(User User);
+        public Task<List<User>> GetUsersAsync();
+        public Task<User> CreateUser(User User);
         public void UpdateUser(User User);
         public void DeleteUser(int userId);
     }

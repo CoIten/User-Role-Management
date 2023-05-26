@@ -10,7 +10,8 @@ namespace BusinessLayer.Interfaces
     public interface IUserService
     {
         public Task<User> GetUserById(int userId);
-        public void CreateUser(User user);
+        public Task<List<User>> GetUsersAsync();
+        public Task<User> CreateUser(User user);
         public void UpdateUser(User user);
         public void DeleteUser(int userId);
     }

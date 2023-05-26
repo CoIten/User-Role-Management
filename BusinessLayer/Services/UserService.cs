@@ -23,9 +23,15 @@ namespace BusinessLayer.Services
 
             return await _userRepository.GetUserById(userId);
         }
-        public void CreateUser(User user)
-        {
 
+        public async Task<List<User>> GetUsersAsync()
+        {
+            return await _userRepository.GetUsersAsync();
+        }
+        public async Task<User> CreateUser(User user)
+        {
+            var createdUser = await _userRepository.CreateUser(user);
+            return createdUser;
         }
         public void UpdateUser(User user)
         {

@@ -23,14 +23,15 @@ namespace DataAccess.Implementations
         {
             return await _dbContext.Users.FindAsync(userId);
         }
-        public async Task<List<User>> GetAllUsers()
+        public async Task<List<User>> GetUsersAsync()
         {
             return await _dbContext.Users.ToListAsync();
         }
-        public void CreateUser(User User)
+        public async Task<User> CreateUser(User User)
         {
             _dbContext.Users.Add(User);
             _dbContext.SaveChanges();
+            return User;
         }
         public void UpdateUser(User User)
         {

@@ -10,7 +10,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddCustomerServices();
+builder.Services.AddBusinessLayerServices();
 builder.Services.AddDbContext<DataContext>();
 var app = builder.Build();
 
@@ -18,6 +18,8 @@ using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
     var dbContext = services.GetRequiredService<DataContext>();
+
+    dbContext.Database.EnsureCreated();
 }
 
 // Configure the HTTP request pipeline.

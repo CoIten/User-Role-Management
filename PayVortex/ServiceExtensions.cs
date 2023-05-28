@@ -1,6 +1,6 @@
 ﻿using ApplicationCore.Interfaces;
 using ApplicationCore.Services;
-using DataAccess.Implementations;
+using Infrastructure.Implementations;
 
 namespace PayVortex
 {

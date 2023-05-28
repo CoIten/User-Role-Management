@@ -24,7 +24,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BusinessLayer\ApplicationCore.csproj" />
-    <ProjectReference Include="..\DataAccess\InfraStructure.csproj" />
+    <ProjectReference Include="..\DataAccess\Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

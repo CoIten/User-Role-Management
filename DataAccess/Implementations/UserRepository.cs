@@ -1,6 +1,6 @@
 ﻿using ApplicationCore.Interfaces;
 using ApplicationCore.Models.Users;
-using DataAccess.Repositories;
+using Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataAccess.Implementations
+namespace Infrastructure.Implementations
 {
     public class UserRepository : IUserRepository
     {

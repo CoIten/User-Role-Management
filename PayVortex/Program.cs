@@ -1,5 +1,4 @@
-using DataAccess.Implementations;
-using DataAccess.Repositories;
+using Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 using PayVortex;
 

@@ -2,7 +2,7 @@
 using ApplicationCore.Services;
 using Infrastructure.Implementations;
 
-namespace PayVortex
+namespace Web
 {
     public static class ServiceExtensions
     {

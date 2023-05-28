@@ -1,4 +1,4 @@
-namespace PayVortex
+namespace Web
 {
     public class WeatherForecast
     {

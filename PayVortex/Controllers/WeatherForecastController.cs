@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
+using Web;
 
-namespace PayVortex.Controllers
+namespace Web.Controllers
 {
     [ApiController]
     [Route("[controller]")]

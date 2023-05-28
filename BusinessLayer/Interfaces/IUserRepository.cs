@@ -1,11 +1,11 @@
-﻿using BusinessLayer.Models.Users;
+﻿using ApplicationCore.Models.Users;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataAccess.Repositories
+namespace ApplicationCore.Interfaces
 {
     public interface IUserRepository
     {

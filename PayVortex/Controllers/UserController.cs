@@ -1,7 +1,6 @@
-﻿using ApplicationCore.Models.Users;
+﻿using ApplicationCore.Interfaces;
+using ApplicationCore.Models.Users;
 using AutoMapper;
-using BusinessLayer.Interfaces;
-using BusinessLayer.Models.Users;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Infrastructure;

@@ -1,6 +1,4 @@
-﻿using BusinessLayer.Models.Users;
-
-namespace Web.DTOs.User
+﻿namespace Web.DTOs.User
 {
     public class UserDTO
     {

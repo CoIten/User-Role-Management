@@ -1,5 +1,5 @@
-﻿using BusinessLayer.Interfaces;
-using BusinessLayer.Models.Permissions;
+﻿using ApplicationCore.Interfaces;
+using ApplicationCore.Models.Permissions;
 using DataAccess.Repositories;
 using Microsoft.EntityFrameworkCore;
 using System;

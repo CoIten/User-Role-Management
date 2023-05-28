@@ -1,7 +1,6 @@
-﻿using BusinessLayer.Interfaces;
-using BusinessLayer.Services;
+﻿using ApplicationCore.Interfaces;
+using ApplicationCore.Services;
 using DataAccess.Implementations;
-using DataAccess.Repositories;
 
 namespace PayVortex
 {

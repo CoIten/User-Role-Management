@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using BusinessLayer.Models.Permissions;
+using ApplicationCore.Models.Permissions;
 
-namespace BusinessLayer.Models.Roles
+namespace ApplicationCore.Models.Roles
 {
     public class RolePermission
     {

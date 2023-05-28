@@ -1,6 +1,5 @@
 ﻿using ApplicationCore.Models.Users;
 using AutoMapper;
-using BusinessLayer.Models.Users;
 using Web.DTOs.User;
 
 namespace Web.MapperProfiles

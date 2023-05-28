@@ -1,12 +1,11 @@
-﻿using BusinessLayer.Models.Permissions;
-using BusinessLayer.Models.Roles;
+﻿using ApplicationCore.Models.Permissions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BusinessLayer.Interfaces
+namespace ApplicationCore.Interfaces
 {
     public interface IPermissionRepository
     {

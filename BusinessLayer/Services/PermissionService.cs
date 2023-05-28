@@ -1,13 +1,12 @@
-﻿using BusinessLayer.Interfaces;
-using BusinessLayer.Models.Permissions;
-using DataAccess.Repositories;
+﻿using ApplicationCore.Interfaces;
+using ApplicationCore.Models.Permissions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BusinessLayer.Services
+namespace ApplicationCore.Services
 {
     public class PermissionService : IPermissionService
     {

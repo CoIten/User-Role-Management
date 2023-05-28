@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BusinessLayer.Models.Transactions
+namespace ApplicationCore.Models.Transactions
 {
     public class Transaction
     {

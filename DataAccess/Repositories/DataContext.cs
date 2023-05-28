@@ -1,6 +1,6 @@
-﻿using BusinessLayer.Models.Permissions;
-using BusinessLayer.Models.Roles;
-using BusinessLayer.Models.Users;
+﻿using ApplicationCore.Models.Permissions;
+using ApplicationCore.Models.Roles;
+using ApplicationCore.Models.Users;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;

@@ -1,7 +1,4 @@
 ﻿using ApplicationCore.Models.Users;
-using BusinessLayer.Interfaces;
-using BusinessLayer.Models.Users;
-using DataAccess.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,8 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Security.Cryptography;
 using Microsoft.AspNetCore.Cryptography.KeyDerivation;
+using ApplicationCore.Interfaces;
 
-namespace BusinessLayer.Services
+namespace ApplicationCore.Services
 {
     public class UserService : IUserService
     {

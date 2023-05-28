@@ -1,5 +1,3 @@
-using BusinessLayer.Interfaces;
-using BusinessLayer.Services;
 using DataAccess.Implementations;
 using DataAccess.Repositories;
 using Microsoft.EntityFrameworkCore;

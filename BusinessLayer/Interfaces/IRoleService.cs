@@ -1,11 +1,11 @@
-﻿using BusinessLayer.Models.Roles;
+﻿using ApplicationCore.Models.Roles;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BusinessLayer.Interfaces
+namespace ApplicationCore.Interfaces
 {
     public interface IRoleService
     {

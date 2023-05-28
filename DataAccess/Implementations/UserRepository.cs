@@ -1,5 +1,5 @@
-﻿using BusinessLayer.Models.Roles;
-using BusinessLayer.Models.Users;
+﻿using ApplicationCore.Interfaces;
+using ApplicationCore.Models.Users;
 using DataAccess.Repositories;
 using Microsoft.EntityFrameworkCore;
 using System;

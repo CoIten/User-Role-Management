@@ -23,6 +23,16 @@ namespace Web.Controllers
         }
 
         [HttpGet]
+        public async Task<ActionResult<UserDTO>> GetUserById([FromBody] int userId)
+        {
+            var user = await _userService.GetUserByIdAsync(userId);
+            if (user == null)
+                return NotFound();
+            var userDTO = _mapper.Map<UserDTO>(user);
+            return Ok(userDTO);
+        }
+
+        [HttpGet]
         public async Task<ActionResult<IEnumerable<UserDTO>>> GetUsers()
         {
             // Call the user service to retrieve a list of users
@@ -43,7 +53,7 @@ namespace Web.Controllers
             var userRegistration = _mapper.Map<UserRegistration>(registrationDTO);
             var createdUser = await _userService.CreateUser(userRegistration);
             var createdUserDTO = _mapper.Map<UserDTO>(createdUser);
-            return CreatedAtAction(nameof(_userService.GetUserById), new { id = createdUserDTO.Id }, createdUserDTO);
+            return CreatedAtAction(nameof(_userService.GetUserByIdAsync), new { id = createdUserDTO.Id }, createdUserDTO);
         }
     }
 }

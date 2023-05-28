@@ -9,7 +9,8 @@ namespace Web.MapperProfiles
     {
         public UserProfile()
         {
-            CreateMap<UserRegistrationRequestDTO, UserRegistration>();
+            CreateMap<UserPostDTO, UserPost>();
+            CreateMap<UserUpdateDTO, UserUpdate>();
             CreateMap<User, UserDTO>();
         }
     }

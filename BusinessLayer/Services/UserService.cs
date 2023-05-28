@@ -23,7 +23,6 @@ namespace BusinessLayer.Services
 
         public async Task<User> GetUserByIdAsync(int userId)
         {
-
             return await _userRepository.GetUserById(userId);
         }
 
@@ -31,7 +30,7 @@ namespace BusinessLayer.Services
         {
             return await _userRepository.GetUsersAsync();
         }
-        public async Task<User> CreateUser(UserRegistration userRegistration)
+        public async Task<User> CreateUser(UserPost userRegistration)
         {
             var hashedPasswordResult = HashPassword(userRegistration.Password);
             var user = new User
@@ -46,9 +45,16 @@ namespace BusinessLayer.Services
             var createdUser = await _userRepository.CreateUser(user);
             return createdUser;
         }
-        public void UpdateUser(User user)
+        public async Task<User> UpdateUser(UserUpdate userUpdate)
         {
-
+            var user = new User
+            {
+                FirstName = userUpdate.FirstName,
+                LastName = userUpdate.LastName,
+                UserName = userUpdate.UserName,
+            };
+            var updatedUser = await _userRepository.UpdateUser(user);
+            return updatedUser;
         }
         public void DeleteUser(int userId)
         {

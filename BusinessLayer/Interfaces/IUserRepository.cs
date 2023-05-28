@@ -12,7 +12,7 @@ namespace DataAccess.Repositories
         public Task<User> GetUserById(int userId);
         public Task<List<User>> GetUsersAsync();
         public Task<User> CreateUser(User User);
-        public void UpdateUser(User User);
+        public Task<User> UpdateUser(User User);
         public void DeleteUser(int userId);
     }
 }

@@ -33,10 +33,11 @@ namespace DataAccess.Implementations
             await _dbContext.SaveChangesAsync();
             return User;
         }
-        public void UpdateUser(User User)
+        public async Task<User> UpdateUser(User User)
         {
             _dbContext.Users.Update(User);
-            _dbContext.SaveChanges();
+            await _dbContext.SaveChangesAsync();
+            return User;
         }
         public void DeleteUser(int userId)
         {

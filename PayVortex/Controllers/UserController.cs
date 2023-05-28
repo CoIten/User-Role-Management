@@ -22,8 +22,8 @@ namespace Web.Controllers
             _mapper = mapper;
         }
 
-        [HttpGet]
-        public async Task<ActionResult<UserDTO>> GetUserById([FromBody] int userId)
+        [HttpGet("{userId}")]
+        public async Task<ActionResult<UserDTO>> GetUserById(int userId)
         {
             var user = await _userService.GetUserByIdAsync(userId);
             if (user == null)
@@ -47,10 +47,19 @@ namespace Web.Controllers
             return Ok(usersDtos);
         }
 
-        [HttpPost]
-        public async Task<ActionResult<UserDTO>> CreateUser([FromBody] UserRegistrationRequestDTO registrationDTO)
+        [HttpPut]
+        public async Task<ActionResult<UserDTO>> UpdateUser([FromBody] UserUpdateDTO userUpdateDTO)
         {
-            var userRegistration = _mapper.Map<UserRegistration>(registrationDTO);
+            var userUpdate = _mapper.Map<UserUpdate>(userUpdateDTO);
+            var updatedUser = _userService.UpdateUser(userUpdate);
+            var updatedUserDTO = _mapper.Map<UserDTO>(updatedUser);
+            return Ok(updatedUserDTO);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult<UserDTO>> CreateUser([FromBody] UserPostDTO registrationDTO)
+        {
+            var userRegistration = _mapper.Map<UserPost>(registrationDTO);
             var createdUser = await _userService.CreateUser(userRegistration);
             var createdUserDTO = _mapper.Map<UserDTO>(createdUser);
             return CreatedAtAction(nameof(_userService.GetUserByIdAsync), new { id = createdUserDTO.Id }, createdUserDTO);

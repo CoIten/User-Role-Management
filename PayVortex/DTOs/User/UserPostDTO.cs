@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Web.DTOs.User
 {
-    public class UserRegistrationRequestDTO
+    public class UserPostDTO
     {
         [Required]
         public string FirstName { get; set; }

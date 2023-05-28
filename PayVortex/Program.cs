@@ -13,11 +13,10 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
-//builder.Services.AddBusinessLayerServices();
-builder.Services.AddScoped<IUserRepository, UserRepository>();
-builder.Services.AddScoped<IRoleRepository, RoleRepository>();
-builder.Services.AddScoped<IPermissionRepository, PermissionRepository>();
+builder.Services.AddInfraStructureServices();
+builder.Services.AddApplicationCoreServices();
 
 var connectionString = builder.Configuration.GetConnectionString("PayVortex");
 if (string.IsNullOrEmpty(connectionString))

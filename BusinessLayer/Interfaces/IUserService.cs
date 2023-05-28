@@ -1,4 +1,5 @@
-﻿using BusinessLayer.Models.Users;
+﻿using ApplicationCore.Models.Users;
+using BusinessLayer.Models.Users;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,7 @@ namespace BusinessLayer.Interfaces
     {
         public Task<User> GetUserById(int userId);
         public Task<List<User>> GetUsersAsync();
-        public Task<User> CreateUser(User user);
+        public Task<User> CreateUser(UserRegistration user);
         public void UpdateUser(User user);
         public void DeleteUser(int userId);
     }

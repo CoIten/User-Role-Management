@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using ApplicationCore.Models.Users;
+using AutoMapper;
 using BusinessLayer.Interfaces;
 using BusinessLayer.Models.Users;
 using Microsoft.AspNetCore.Http;
@@ -36,12 +37,12 @@ namespace Web.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<UserDTO>> CreateUser(UserRegistrationRequestDTO registrationDTO)
+        public async Task<ActionResult<UserDTO>> CreateUser([FromBody] UserRegistrationRequestDTO registrationDTO)
         {
-            var userDTO = _mapper.Map<User>(registrationDTO);
-            var createdUser = await _userService.CreateUser(userDTO);
+            var userRegistration = _mapper.Map<UserRegistration>(registrationDTO);
+            var createdUser = await _userService.CreateUser(userRegistration);
             var createdUserDTO = _mapper.Map<UserDTO>(createdUser);
-            return CreatedAtAction(nameof(_userService.GetUserById), new { id = createdUser.Id }, createdUser);
+            return CreatedAtAction(nameof(_userService.GetUserById), new { id = createdUserDTO.Id }, createdUserDTO);
         }
     }
 }

@@ -29,8 +29,8 @@ namespace DataAccess.Implementations
         }
         public async Task<User> CreateUser(User User)
         {
-            _dbContext.Users.Add(User);
-            _dbContext.SaveChanges();
+            await _dbContext.Users.AddAsync(User);
+            await _dbContext.SaveChangesAsync();
             return User;
         }
         public void UpdateUser(User User)

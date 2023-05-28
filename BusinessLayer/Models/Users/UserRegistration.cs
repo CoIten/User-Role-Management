@@ -1,9 +1,13 @@
-﻿using BusinessLayer.Models.Users;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Web.DTOs.User
+namespace ApplicationCore.Models.Users
 {
-    public class UserRegistrationRequestDTO
+    public class UserRegistration
     {
         [Required]
         public string FirstName { get; set; }

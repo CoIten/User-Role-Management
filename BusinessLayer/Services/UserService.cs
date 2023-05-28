@@ -49,6 +49,7 @@ namespace BusinessLayer.Services
         {
             var user = new User
             {
+                Id = userUpdate.Id,
                 FirstName = userUpdate.FirstName,
                 LastName = userUpdate.LastName,
                 UserName = userUpdate.UserName,

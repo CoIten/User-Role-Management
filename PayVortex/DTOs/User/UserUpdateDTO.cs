@@ -4,6 +4,9 @@ namespace Web.DTOs.User
 {
     public class UserUpdateDTO
     {
+        [Key]
+        [Required]
+        public int Id { get; set; }
         [Required]
         public string FirstName { get; set; }
         [Required]

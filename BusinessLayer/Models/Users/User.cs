@@ -13,8 +13,8 @@ namespace BusinessLayer.Models.Users
         public string LastName { get; set; }
         //public ICollection<UserRole>? UserRoles { get; set; }
         public string UserName { get; set; }
-        public byte[] PasswordSalt { get; set; }
-        public byte[] HashedPassword { get; set; }
+        public string PasswordSalt { get; set; }
+        public string HashedPassword { get; set; }
         public string Email { get; set; }
     }
 }

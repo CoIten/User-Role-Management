@@ -33,7 +33,8 @@ namespace Web.Controllers
             }
 
             // Return the list of users as the HTTP response
-            return Ok(users);
+            var usersDtos = _mapper.Map<List<UserDTO>>(users);
+            return Ok(usersDtos);
         }
 
         [HttpPost]

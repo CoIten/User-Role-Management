@@ -57,26 +57,25 @@ namespace BusinessLayer.Services
         private HashedPasswordResult HashPassword(string password)
         {
             byte[] salt = RandomNumberGenerator.GetBytes(128 / 8);
-            Console.WriteLine($"Salt: {Convert.ToBase64String(salt)}");
 
-            byte[] hashed = KeyDerivation.Pbkdf2(
+            string hashed = Convert.ToBase64String(KeyDerivation.Pbkdf2(
                 password: password!,
                 salt: salt,
                 prf: KeyDerivationPrf.HMACSHA256,
                 iterationCount: 100000,
-                numBytesRequested: 256 / 8);
+                numBytesRequested: 256 / 8));
 
             return new HashedPasswordResult
             {
                 HashedPassword = hashed,
-                PasswordSalt = salt
+                PasswordSalt = Convert.ToBase64String(salt)
             };
         }
 
         private class HashedPasswordResult
         {
-            public byte[] PasswordSalt { get; set; }
-            public byte[] HashedPassword { get; set; }
+            public string PasswordSalt { get; set; }
+            public string HashedPassword { get; set; }
         }
     }
 }

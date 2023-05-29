@@ -38,10 +38,10 @@ namespace Infrastructure.Implementations
             _dbContext.Users.Update(User);
             await _dbContext.SaveChangesAsync();
         }
-        public void DeleteUser(int userId)
+        public async Task DeleteUser(User User)
         {
-            //_dbContext.Users.Remove(User);
-            _dbContext.SaveChanges();
+            _dbContext.Users.Remove(User);
+            await _dbContext.SaveChangesAsync();
         }
     }
 }

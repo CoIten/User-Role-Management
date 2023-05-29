@@ -60,5 +60,11 @@ namespace Web.Controllers
             var updatedUserDTO = _mapper.Map<UserDTO>(updatedUser);
             return Ok(updatedUserDTO);
         }
+
+        [HttpDelete("{userId}")]
+        public async Task DeleteUser(int userId)
+        {
+            await _userService.DeleteUser(userId);
+        }
     }
 }

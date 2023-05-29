@@ -13,6 +13,6 @@ namespace ApplicationCore.Interfaces
         public Task<List<User>> GetUsersAsync();
         public Task<User> CreateUser(User User);
         public Task UpdateUser(User User);
-        public void DeleteUser(int userId);
+        public Task DeleteUser(User User);
     }
 }

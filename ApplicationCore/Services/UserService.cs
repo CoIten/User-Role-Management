@@ -59,9 +59,15 @@ namespace ApplicationCore.Services
             await _userRepository.UpdateUser(existentUser);
             return existentUser;
         }
-        public void DeleteUser(int userId)
+        public async Task DeleteUser(int userId)
         {
+            var existentUser = await _userRepository.GetUserById(userId);
+            if (existentUser == null)
+            {
+                throw new Exception("User Not Found!");
+            }
 
+            await _userRepository.DeleteUser(existentUser);
         }
         private HashedPasswordResult HashPassword(string password)
         {

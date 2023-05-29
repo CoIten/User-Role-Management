@@ -12,7 +12,7 @@ namespace ApplicationCore.Interfaces
         public Task<User> GetUserById(int userId);
         public Task<List<User>> GetUsersAsync();
         public Task<User> CreateUser(User User);
-        public Task<User> UpdateUser(User User);
+        public Task UpdateUser(User User);
         public void DeleteUser(int userId);
     }
 }

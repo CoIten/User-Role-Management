@@ -45,15 +45,19 @@ namespace ApplicationCore.Services
         }
         public async Task<User> UpdateUser(UserUpdate userUpdate)
         {
-            var user = new User
+            var existentUser = await _userRepository.GetUserById(userUpdate.Id);
+            if (existentUser == null)
             {
-                Id = userUpdate.Id,
-                FirstName = userUpdate.FirstName,
-                LastName = userUpdate.LastName,
-                UserName = userUpdate.UserName,
-            };
-            var updatedUser = await _userRepository.UpdateUser(user);
-            return updatedUser;
+                throw new Exception("User Not Found!");
+            }
+
+            existentUser.Id = userUpdate.Id;
+            existentUser.FirstName = userUpdate.FirstName;
+            existentUser.LastName = userUpdate.LastName;
+            existentUser.UserName = userUpdate.UserName;
+
+            await _userRepository.UpdateUser(existentUser);
+            return existentUser;
         }
         public void DeleteUser(int userId)
         {

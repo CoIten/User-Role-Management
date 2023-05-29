@@ -22,7 +22,7 @@ namespace Web.Controllers
         }
 
         [HttpGet("{userId}")]
-        public async Task<ActionResult<UserDTO>> GetUserById(int userId)
+        public async Task<ActionResult<UserDTO>> GetUserByIdAsync(int userId)
         {
             var user = await _userService.GetUserByIdAsync(userId);
             if (user == null)
@@ -34,25 +34,13 @@ namespace Web.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<UserDTO>>> GetUsers()
         {
-            // Call the user service to retrieve a list of users
             var users = await _userService.GetUsersAsync();
             if (users.IsNullOrEmpty())
             {
                 return NotFound();
             }
-
-            // Return the list of users as the HTTP response
             var usersDtos = _mapper.Map<List<UserDTO>>(users);
             return Ok(usersDtos);
-        }
-
-        [HttpPut]
-        public async Task<ActionResult<UserDTO>> UpdateUser([FromBody] UserUpdateDTO userUpdateDTO)
-        {
-            var userUpdate = _mapper.Map<UserUpdate>(userUpdateDTO);
-            var updatedUser = _userService.UpdateUser(userUpdate);
-            var updatedUserDTO = _mapper.Map<UserDTO>(updatedUser);
-            return Ok(updatedUserDTO);
         }
 
         [HttpPost]
@@ -61,7 +49,16 @@ namespace Web.Controllers
             var userRegistration = _mapper.Map<UserPost>(registrationDTO);
             var createdUser = await _userService.CreateUser(userRegistration);
             var createdUserDTO = _mapper.Map<UserDTO>(createdUser);
-            return CreatedAtAction(nameof(_userService.GetUserByIdAsync), new { id = createdUserDTO.Id }, createdUserDTO);
+            return CreatedAtAction("GetUserByIdAsync", new { userId = createdUserDTO.Id }, createdUserDTO);
+        }
+
+        [HttpPut]
+        public async Task<ActionResult<UserDTO>> UpdateUser([FromBody] UserUpdateDTO userUpdateDTO)
+        {
+            var userUpdate = _mapper.Map<UserUpdate>(userUpdateDTO);
+            var updatedUser = await _userService.UpdateUser(userUpdate);
+            var updatedUserDTO = _mapper.Map<UserDTO>(updatedUser);
+            return Ok(updatedUserDTO);
         }
     }
 }

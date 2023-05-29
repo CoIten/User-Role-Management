@@ -33,14 +33,14 @@ namespace Infrastructure.Implementations
             await _dbContext.SaveChangesAsync();
             return User;
         }
-        public async Task<User> UpdateUser(User User)
+        public async Task UpdateUser(User User)
         {
             _dbContext.Users.Update(User);
             await _dbContext.SaveChangesAsync();
-            return User;
         }
         public void DeleteUser(int userId)
         {
+            //_dbContext.Users.Remove(User);
             _dbContext.SaveChanges();
         }
     }

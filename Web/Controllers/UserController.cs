@@ -22,6 +22,7 @@ namespace Web.Controllers
         }
 
         [HttpGet("{userId}")]
+        [ActionName("GetUserByIdAsync")]  // for "CreateUser" CreatedAtAction, because .net removes "Async" suffix and it can't find this action
         public async Task<ActionResult<UserDTO>> GetUserByIdAsync(int userId)
         {
             var user = await _userService.GetUserByIdAsync(userId);
@@ -49,7 +50,7 @@ namespace Web.Controllers
             var userRegistration = _mapper.Map<UserPost>(registrationDTO);
             var createdUser = await _userService.CreateUser(userRegistration);
             var createdUserDTO = _mapper.Map<UserDTO>(createdUser);
-            return CreatedAtAction("GetUserByIdAsync", new { userId = createdUserDTO.Id }, createdUserDTO);
+            return CreatedAtAction(nameof(this.GetUserByIdAsync) , new { userId = createdUserDTO.Id }, createdUserDTO);
         }
 
         [HttpPut]

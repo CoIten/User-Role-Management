@@ -17,8 +17,8 @@ namespace Web
         public static IServiceCollection AddApplicationCoreServices(this IServiceCollection services)
         {
             services.AddScoped<IUserService, UserService>();
-            services.AddScoped<IUserService, UserService>();
-            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IRoleService, RoleService>();
+            services.AddScoped<IPermissionService, PermissionService>();
             return services;
         }
     }

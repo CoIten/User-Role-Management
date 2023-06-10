@@ -1,4 +1,5 @@
-﻿using ApplicationCore.Interfaces;
+﻿using ApplicationCore.Interfaces.Repos;
+using ApplicationCore.Interfaces.Services;
 using ApplicationCore.Services;
 using Infrastructure.Implementations;
 

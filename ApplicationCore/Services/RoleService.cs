@@ -1,4 +1,5 @@
-﻿using ApplicationCore.Interfaces;
+﻿using ApplicationCore.Interfaces.Repos;
+using ApplicationCore.Interfaces.Services;
 using ApplicationCore.Models.Roles;
 using System;
 using System.Collections.Generic;

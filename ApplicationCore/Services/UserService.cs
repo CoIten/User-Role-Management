@@ -6,7 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Security.Cryptography;
 using Microsoft.AspNetCore.Cryptography.KeyDerivation;
-using ApplicationCore.Interfaces;
+using ApplicationCore.Interfaces.Repos;
+using ApplicationCore.Interfaces.Services;
 
 namespace ApplicationCore.Services
 {

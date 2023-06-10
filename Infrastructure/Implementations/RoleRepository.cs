@@ -1,4 +1,4 @@
-﻿using ApplicationCore.Interfaces;
+﻿using ApplicationCore.Interfaces.Repos;
 using ApplicationCore.Models.Roles;
 using Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;

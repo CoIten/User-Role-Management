@@ -19,7 +19,7 @@ namespace Infrastructure.Implementations
             _dbContext = dbContext;
         }
 
-        public async Task<Role> GetRoleById(int roleId)
+        public async Task<Role> GetRoleByIdAsync(int roleId)
         {
             return await _dbContext.Roles.FindAsync(roleId);
         }
@@ -27,24 +27,21 @@ namespace Infrastructure.Implementations
         {
             return await _dbContext.Roles.ToListAsync();
         }
-        public void CreateRole(Role Role)
+        public async Task<Role> CreateRole(Role Role)
         {
-            _dbContext.Roles.Add(Role);
-            _dbContext.SaveChanges();
+            await _dbContext.Roles.AddAsync(Role);
+            await _dbContext.SaveChangesAsync();
+            return Role;
         }
-        public void UpdateRole(Role Role)
+        public async Task UpdateRole(Role Role)
         {
             _dbContext.Roles.Update(Role);
-            _dbContext.SaveChanges();
+            await _dbContext.SaveChangesAsync();
         }
-        public void DeleteRole(int roleId)
+        public async Task DeleteRole(Role Role)
         {
-            var Role = _dbContext.Roles.FirstOrDefault(r => r.Id == roleId);
-            if (Role != null)
-            {
-                _dbContext.Roles.Remove(Role);
-                _dbContext.SaveChanges();
-            }
+            _dbContext.Roles.Remove(Role);
+            await _dbContext.SaveChangesAsync();
         }
     }
 }

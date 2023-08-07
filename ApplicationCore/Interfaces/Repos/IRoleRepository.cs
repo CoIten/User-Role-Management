@@ -9,10 +9,10 @@ namespace ApplicationCore.Interfaces.Repos
 {
     public interface IRoleRepository
     {
-        public Task<Role> GetRoleById(int roleId);
+        public Task<Role> GetRoleByIdAsync(int roleId);
         public Task<List<Role>> GetAllRoles();
-        public void CreateRole(Role role);
-        public void UpdateRole(Role role);
-        public void DeleteRole(int roleId);
+        public Task<Role> CreateRole(Role role);
+        public Task UpdateRole(Role role);
+        public Task DeleteRole(Role Role);
     }
 }

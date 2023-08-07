@@ -52,7 +52,6 @@ namespace ApplicationCore.Services
                 throw new Exception("User Not Found!");
             }
 
-            existentUser.Id = userUpdate.Id;
             existentUser.FirstName = userUpdate.FirstName;
             existentUser.LastName = userUpdate.LastName;
             existentUser.UserName = userUpdate.UserName;

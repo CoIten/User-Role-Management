@@ -9,9 +9,9 @@ namespace ApplicationCore.Interfaces.Services
 {
     public interface IRoleService
     {
-        public Task<Role> GetRoleById(int RoleId);
-        public void CreateRole(Role Role);
-        public void UpdateRole(Role Role);
-        public void DeleteRole(int RoleId);
+        public Task<Role> GetRoleByIdAsync(int RoleId);
+        public Task<Role> CreateRole(Role Role);
+        public Task<Role> UpdateRole(Role Role);
+        public Task DeleteRole(int roleId);
     }
 }

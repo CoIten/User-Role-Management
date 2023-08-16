@@ -1,5 +1,8 @@
 using Infrastructure.Contexts;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 using Web;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,8 +15,10 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
+builder.Services.AddJwtAuthServices();
 builder.Services.AddInfraStructureServices();
 builder.Services.AddApplicationCoreServices();
+
 
 var connectionString = builder.Configuration.GetConnectionString("PayVortex");
 if (string.IsNullOrEmpty(connectionString))

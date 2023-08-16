@@ -76,7 +76,7 @@ namespace Web.Controllers
         }
 
         [HttpDelete("{userId}")]
-        [Authorize(Roles = "Admin")]
+        [Authorize]
         public async Task DeleteUser(int userId)
         {
             await _userService.DeleteUser(userId);

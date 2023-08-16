@@ -1,6 +1,7 @@
 ﻿using ApplicationCore.Interfaces.Services;
 using ApplicationCore.Models.Users;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
@@ -11,6 +12,7 @@ namespace Web.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class UserController : ControllerBase
     {
         private readonly IUserService _userService;
@@ -53,6 +55,13 @@ namespace Web.Controllers
             return CreatedAtAction(nameof(this.GetUserByIdAsync) , new { userId = createdUserDTO.Id }, createdUserDTO);
         }
 
+        [HttpPost("login")]
+        public async Task<IActionResult> Login([FromBody] UserLoginDTO userLoginDTO)
+        {
+            var userLogin = _mapper.Map<UserLogin>(userLoginDTO);
+            var user = await _userService.AuthenticateUser(userLogin);
+        }
+
         [HttpPut]
         public async Task<ActionResult<UserDTO>> UpdateUser([FromBody] UserUpdateDTO userUpdateDTO)
         {
@@ -63,6 +72,7 @@ namespace Web.Controllers
         }
 
         [HttpDelete("{userId}")]
+        [Authorize(Roles = "Admin")]
         public async Task DeleteUser(int userId)
         {
             await _userService.DeleteUser(userId);

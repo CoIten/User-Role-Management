@@ -29,6 +29,7 @@ namespace ApplicationCore.Services
         {
             return await _userRepository.GetUsersAsync();
         }
+
         public async Task<User> CreateUser(UserPost userRegistration)
         {
             var hashedPasswordResult = HashPassword(userRegistration.Password);
@@ -44,6 +45,19 @@ namespace ApplicationCore.Services
             var createdUser = await _userRepository.CreateUser(user);
             return createdUser;
         }
+
+        public async Task<string> AuthenticateAndGenerateToken(UserLogin userLogin)
+        {
+            var user = await _userRepository.GetUserByEmailAsync(userLogin.Email);
+
+            if (user == null || !VerifyPasswordHash(userLogin.Password, user.PasswordSalt, user.HashedPassword))
+            {
+                return null;
+            }
+
+
+        }
+
         public async Task<User> UpdateUser(UserUpdate userUpdate)
         {
             var existentUser = await _userRepository.GetUserById(userUpdate.Id);
@@ -59,6 +73,7 @@ namespace ApplicationCore.Services
             await _userRepository.UpdateUser(existentUser);
             return existentUser;
         }
+
         public async Task DeleteUser(int userId)
         {
             var existentUser = await _userRepository.GetUserById(userId);
@@ -69,6 +84,7 @@ namespace ApplicationCore.Services
 
             await _userRepository.DeleteUser(existentUser);
         }
+
         private HashedPasswordResult HashPassword(string password)
         {
             byte[] salt = RandomNumberGenerator.GetBytes(128 / 8);
@@ -78,7 +94,8 @@ namespace ApplicationCore.Services
                 salt: salt,
                 prf: KeyDerivationPrf.HMACSHA256,
                 iterationCount: 100000,
-                numBytesRequested: 256 / 8));
+                numBytesRequested: 256 / 8
+                ));
 
             return new HashedPasswordResult
             {
@@ -91,6 +108,22 @@ namespace ApplicationCore.Services
         {
             public string PasswordSalt { get; set; }
             public string HashedPassword { get; set; }
+        }
+
+        private bool VerifyPasswordHash(string password, string passwordSalt, string hashedPassword)
+        {
+            string hashedPw = Convert.ToBase64String(KeyDerivation.Pbkdf2(
+                password: password!,
+                salt: Convert.FromBase64String(passwordSalt),
+                prf: KeyDerivationPrf.HMACSHA256,
+                iterationCount: 100000,
+                numBytesRequested: 256 / 8
+                ));
+
+            if (hashedPw == hashedPassword)
+                return true;
+
+            return false;
         }
     }
 }

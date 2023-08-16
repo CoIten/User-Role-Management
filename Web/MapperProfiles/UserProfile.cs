@@ -11,6 +11,7 @@ namespace Web.MapperProfiles
             CreateMap<UserPostDTO, UserPost>();
             CreateMap<UserUpdateDTO, UserUpdate>();
             CreateMap<User, UserDTO>();
+            CreateMap<UserLogin, UserLoginDTO>();
         }
     }
 }

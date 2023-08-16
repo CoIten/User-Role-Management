@@ -23,21 +23,30 @@ namespace Infrastructure.Implementations
         {
             return await _dbContext.Users.FindAsync(userId);
         }
+
         public async Task<List<User>> GetUsersAsync()
         {
             return await _dbContext.Users.ToListAsync();
         }
+
+        public async Task<User> GetUserByEmailAsync(string email)
+        {
+            return await _dbContext.Users.FirstOrDefaultAsync(u => u.Email == email)
+        }
+
         public async Task<User> CreateUser(User User)
         {
             await _dbContext.Users.AddAsync(User);
             await _dbContext.SaveChangesAsync();
             return User;
         }
+
         public async Task UpdateUser(User User)
         {
             _dbContext.Users.Update(User);
             await _dbContext.SaveChangesAsync();
         }
+
         public async Task DeleteUser(User User)
         {
             _dbContext.Users.Remove(User);

@@ -14,10 +14,12 @@ namespace ApplicationCore.Services
     public class UserService : IUserService
     {
         private readonly IUserRepository _userRepository;
+        private readonly ITokenService _tokenService;
 
-        public UserService(IUserRepository userRepository)
+        public UserService(IUserRepository userRepository, ITokenService tokenService)
         {
             _userRepository = userRepository;
+            _tokenService = tokenService;
         }
 
         public async Task<User> GetUserByIdAsync(int userId)
@@ -46,7 +48,7 @@ namespace ApplicationCore.Services
             return createdUser;
         }
 
-        public async Task<string> AuthenticateAndGenerateToken(UserLogin userLogin)
+        public async Task<string?> AuthenticateAndGenerateToken(UserLogin userLogin)
         {
             var user = await _userRepository.GetUserByEmailAsync(userLogin.Email);
 
@@ -55,7 +57,8 @@ namespace ApplicationCore.Services
                 return null;
             }
 
-            var token = TokenGenerator.GenerateToken();
+            string token = _tokenService.GenerateToken(user);
+            return token;
         }
 
         public async Task<User> UpdateUser(UserUpdate userUpdate)

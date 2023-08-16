@@ -23,6 +23,7 @@ namespace Web
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IRoleService, RoleService>();
             services.AddScoped<IPermissionService, PermissionService>();
+            services.AddScoped<ITokenService, TokenService>();
             return services;
         }
 
@@ -43,7 +44,7 @@ namespace Web
                     ValidateIssuerSigningKey = true,
                     ValidIssuer = "payvortex.com",
                     ValidAudience = "payvortex-clients",
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("need-to-get-from-configs"))
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("need-to-get-from-configsneed-to-get-from-configsneed-to-get-from-configs"))
                 };
             });
 

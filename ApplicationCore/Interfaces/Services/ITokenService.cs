@@ -9,6 +9,6 @@ namespace ApplicationCore.Interfaces.Services
 {
     public interface ITokenService
     {
-        public Task<string> GenerateToken(User User);
+        public string GenerateToken(User User);
     }
 }

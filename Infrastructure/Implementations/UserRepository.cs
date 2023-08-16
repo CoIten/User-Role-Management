@@ -31,7 +31,7 @@ namespace Infrastructure.Implementations
 
         public async Task<User> GetUserByEmailAsync(string email)
         {
-            return await _dbContext.Users.FirstOrDefaultAsync(u => u.Email == email)
+            return await _dbContext.Users.FirstOrDefaultAsync(u => u.Email == email);
         }
 
         public async Task<User> CreateUser(User User)

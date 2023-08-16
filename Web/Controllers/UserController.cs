@@ -12,7 +12,6 @@ namespace Web.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
     public class UserController : ControllerBase
     {
         private readonly IUserService _userService;
@@ -59,7 +58,12 @@ namespace Web.Controllers
         public async Task<IActionResult> Login([FromBody] UserLoginDTO userLoginDTO)
         {
             var userLogin = _mapper.Map<UserLogin>(userLoginDTO);
-            var user = await _userService.AuthenticateUser(userLogin);
+            var token = await _userService.AuthenticateAndGenerateToken(userLogin);
+            if (token == null)
+            {
+                return Unauthorized();
+            }
+            return Ok(new { Token = token });
         }
 
         [HttpPut]

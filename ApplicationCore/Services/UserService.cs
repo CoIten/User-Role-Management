@@ -55,7 +55,7 @@ namespace ApplicationCore.Services
                 return null;
             }
 
-
+            var token = TokenGenerator.GenerateToken();
         }
 
         public async Task<User> UpdateUser(UserUpdate userUpdate)

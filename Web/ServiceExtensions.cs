@@ -14,6 +14,7 @@ namespace Web
         {
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IRoleRepository, RoleRepository>();
+            services.AddScoped<IUserRoleRepository, UserRoleRepository>();
             services.AddScoped<IPermissionRepository, PermissionRepository>();
             return services;
         }
@@ -56,6 +57,7 @@ namespace Web
             services.AddAuthorization(options =>
             {
                 options.AddPolicy("AdminOnly", policy => policy.RequireRole("Admin"));
+                options.AddPolicy("Support", policy => policy.RequireRole("Support"));
             });
             return services;
         }

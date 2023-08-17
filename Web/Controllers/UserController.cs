@@ -77,9 +77,10 @@ namespace Web.Controllers
 
         [HttpDelete("{userId}")]
         [Authorize]
-        public async Task DeleteUser(int userId)
+        public async Task<ActionResult> DeleteUser(int userId)
         {
             await _userService.DeleteUser(userId);
+            return Ok();
         }
     }
 }

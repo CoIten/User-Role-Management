@@ -1,4 +1,5 @@
-﻿using ApplicationCore.Models.Users;
+﻿using ApplicationCore.Models.Roles;
+using ApplicationCore.Models.Users;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,6 @@ namespace ApplicationCore.Interfaces.Services
 {
     public interface ITokenService
     {
-        public string GenerateToken(User User);
+        public string GenerateToken(User User, Role Role);
     }
 }

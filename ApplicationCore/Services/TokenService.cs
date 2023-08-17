@@ -1,4 +1,5 @@
 ﻿using ApplicationCore.Interfaces.Services;
+using ApplicationCore.Models.Roles;
 using ApplicationCore.Models.Users;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
@@ -20,14 +21,15 @@ namespace ApplicationCore.Services
             _configuration = configuration;
         }
 
-        public string GenerateToken(User User)
+        public string GenerateToken(User User, Role Role)
         {
             try
             {
                 var claims = new List<Claim>()
                 {
                     new Claim(ClaimTypes.NameIdentifier, User.Id.ToString()),
-                    new Claim(ClaimTypes.Email, User.Email)
+                    new Claim(ClaimTypes.Email, User.Email),
+                    new Claim(ClaimTypes.Role, Role.Name)
                 };
 
                 var jwtSettings = _configuration.GetSection("JwtSettings");

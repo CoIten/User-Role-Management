@@ -27,8 +27,13 @@ namespace Web
             return services;
         }
 
-        public static IServiceCollection AddJwtAuthServices(this IServiceCollection services)
+        public static IServiceCollection AddJwtAuthServices(this IServiceCollection services, IConfiguration configuration)
         {
+            var jwtSettings = configuration.GetSection("JwtSettings");
+            var secretKey = jwtSettings["SecretKey"];
+            var validIssuer = jwtSettings["ValidIssuer"];
+            var validAudience = jwtSettings["ValidAudience"];
+
             services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -42,9 +47,9 @@ namespace Web
                     ValidateAudience = true,
                     ValidateLifetime = true,
                     ValidateIssuerSigningKey = true,
-                    ValidIssuer = "payvortex.com",
-                    ValidAudience = "payvortex-clients",
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("need-to-get-from-configsneed-to-get-from-configsneed-to-get-from-configs"))
+                    ValidIssuer = validIssuer,
+                    ValidAudience = validAudience,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey!))
                 };
             });
 

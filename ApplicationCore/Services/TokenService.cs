@@ -1,5 +1,6 @@
 ﻿using ApplicationCore.Interfaces.Services;
 using ApplicationCore.Models.Users;
+using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,12 @@ namespace ApplicationCore.Services
 {
     public class TokenService : ITokenService
     {
+        private readonly IConfiguration _configuration;
+        public TokenService(IConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
+
         public string GenerateToken(User User)
         {
             try
@@ -23,13 +30,19 @@ namespace ApplicationCore.Services
                     new Claim(ClaimTypes.Email, User.Email)
                 };
 
-                var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("need-to-get-from-configsneed-to-get-from-configsneed-to-get-from-configs"));
+                var jwtSettings = _configuration.GetSection("JwtSettings");
+
+                var secretKey = jwtSettings["SecretKey"];
+                var validIssuer = jwtSettings["ValidIssuer"];
+                var validAudience = jwtSettings["ValidAudience"];
+
+                var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey!));
                 var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
                 var expires = DateTime.Now.AddHours(1);
 
                 var token = new JwtSecurityToken(
-                    "payvortex.com",
-                    "payvortex.clients",
+                    validIssuer,
+                    validAudience,
                     claims,
                     expires: expires,
                     signingCredentials: creds

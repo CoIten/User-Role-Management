@@ -34,22 +34,22 @@ namespace Infrastructure.Implementations
             return await _dbContext.Users.FirstOrDefaultAsync(u => u.Email == email);
         }
 
-        public async Task<User> CreateUser(User User)
+        public async Task<User> CreateUser(User user)
         {
-            await _dbContext.Users.AddAsync(User);
+            await _dbContext.Users.AddAsync(user);
             await _dbContext.SaveChangesAsync();
-            return User;
+            return user;
         }
 
-        public async Task UpdateUser(User User)
+        public async Task UpdateUser(User user)
         {
-            _dbContext.Users.Update(User);
+            _dbContext.Users.Update(user);
             await _dbContext.SaveChangesAsync();
         }
 
-        public async Task DeleteUser(User User)
+        public async Task DeleteUser(User user)
         {
-            _dbContext.Users.Remove(User);
+            _dbContext.Users.Remove(user);
             await _dbContext.SaveChangesAsync();
         }
     }

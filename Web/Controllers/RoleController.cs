@@ -33,16 +33,16 @@ namespace Web.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Role>> CreateRole([FromBody] Role Role)
+        public async Task<ActionResult<Role>> CreateRole([FromBody] Role role)
         {
-            var createdRole = await _roleService.CreateRole(Role);
+            var createdRole = await _roleService.CreateRole(role);
             return CreatedAtAction(nameof(this.GetRoleByIdAsync), new { roleId = createdRole.Id }, createdRole);
         }
 
         [HttpPut]
-        public async Task<ActionResult<Role>> UpdateRole([FromBody] Role Role)
+        public async Task<ActionResult<Role>> UpdateRole([FromBody] Role role)
         {
-            var updatedRole = await _roleService.UpdateRole(Role);
+            var updatedRole = await _roleService.UpdateRole(role);
             return Ok(updatedRole);
         }
 

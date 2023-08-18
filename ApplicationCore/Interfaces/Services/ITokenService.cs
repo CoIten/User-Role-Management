@@ -10,6 +10,6 @@ namespace ApplicationCore.Interfaces.Services
 {
     public interface ITokenService
     {
-        public string GenerateToken(User User, Role Role);
+        public string GenerateToken(User user, Role role);
     }
 }

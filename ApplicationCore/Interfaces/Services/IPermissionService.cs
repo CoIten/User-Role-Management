@@ -10,8 +10,8 @@ namespace ApplicationCore.Interfaces.Services
     public interface IPermissionService
     {
         public Task<Permission> GetPermissionById(int permissionId);
-        public void CreatePermission(Permission Permission);
-        public void UpdatePermission(Permission Permission);
+        public void CreatePermission(Permission permission);
+        public void UpdatePermission(Permission permission);
         public void DeletePermission(int permissionId);
     }
 }

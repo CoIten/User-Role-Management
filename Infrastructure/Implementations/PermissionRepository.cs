@@ -27,22 +27,22 @@ namespace Infrastructure.Implementations
         {
             return await _dbContext.Permissions.ToListAsync();
         }
-        public void CreatePermission(Permission Permission)
+        public void CreatePermission(Permission permission)
         {
-            _dbContext.Permissions.Add(Permission);
+            _dbContext.Permissions.Add(permission);
             _dbContext.SaveChanges();
         }
-        public void UpdatePermission(Permission Permission)
+        public void UpdatePermission(Permission permission)
         {
-            _dbContext.Permissions.Update(Permission);
+            _dbContext.Permissions.Update(permission);
             _dbContext.SaveChanges();
         }
         public void DeletePermission(int permissionId)
         {
-            var Permission = _dbContext.Permissions.FirstOrDefault(r => r.Id == permissionId);
-            if (Permission != null)
+            var permission = _dbContext.Permissions.FirstOrDefault(r => r.Id == permissionId);
+            if (permission != null)
             {
-                _dbContext.Permissions.Remove(Permission);
+                _dbContext.Permissions.Remove(permission);
                 _dbContext.SaveChanges();
             }
         }

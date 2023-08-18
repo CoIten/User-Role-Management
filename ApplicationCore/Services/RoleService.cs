@@ -24,21 +24,21 @@ namespace ApplicationCore.Services
             return await _roleRepository.GetRoleByIdAsync(roleId);
         }
 
-        public async Task<Role> CreateRole(Role Role)
+        public async Task<Role> CreateRole(Role role)
         {
-            var createdRole = await _roleRepository.CreateRole(Role);
+            var createdRole = await _roleRepository.CreateRole(role);
             return createdRole;    
         }
 
-        public async Task<Role> UpdateRole(Role Role)
+        public async Task<Role> UpdateRole(Role role)
         {
-            var existentRole = await _roleRepository.GetRoleByIdAsync(Role.Id);
+            var existentRole = await _roleRepository.GetRoleByIdAsync(role.Id);
             if (existentRole == null)
             {
                 throw new Exception("Role Not Found!");
             }
 
-            existentRole.Name = Role.Name;
+            existentRole.Name = role.Name;
 
             await _roleRepository.UpdateRole(existentRole);
             return existentRole;

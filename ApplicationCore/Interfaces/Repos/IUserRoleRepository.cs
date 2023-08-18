@@ -11,8 +11,8 @@ namespace ApplicationCore.Interfaces.Repos
     public interface IUserRoleRepository
     {
         public Task<UserRole> GetUserRoleByUserIdAsync(int userId);
-        //public Task<UserRole> CreateUserRole(Role role);
+        public Task<UserRole> CreateUserRoleAsync(UserRole userRole);
         //public Task UpdateRole(Role role);
-        //public Task DeleteRole(Role Role);
+        //public Task DeleteRole(Role role);
     }
 }

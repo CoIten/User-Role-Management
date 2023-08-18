@@ -27,20 +27,20 @@ namespace Infrastructure.Implementations
         {
             return await _dbContext.Roles.ToListAsync();
         }
-        public async Task<Role> CreateRole(Role Role)
+        public async Task<Role> CreateRole(Role role)
         {
-            await _dbContext.Roles.AddAsync(Role);
+            await _dbContext.Roles.AddAsync(role);
             await _dbContext.SaveChangesAsync();
-            return Role;
+            return role;
         }
-        public async Task UpdateRole(Role Role)
+        public async Task UpdateRole(Role role)
         {
-            _dbContext.Roles.Update(Role);
+            _dbContext.Roles.Update(role);
             await _dbContext.SaveChangesAsync();
         }
-        public async Task DeleteRole(Role Role)
+        public async Task DeleteRole(Role role)
         {
-            _dbContext.Roles.Remove(Role);
+            _dbContext.Roles.Remove(role);
             await _dbContext.SaveChangesAsync();
         }
     }

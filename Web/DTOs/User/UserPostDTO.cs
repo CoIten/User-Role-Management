@@ -17,5 +17,7 @@ namespace Web.DTOs.User
         [Required]
         [DataType(DataType.Password)]
         public string Password { get; set; }
+        [Required]
+        public int RoleId { get; set; }
     }
 }

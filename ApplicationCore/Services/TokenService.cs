@@ -21,15 +21,15 @@ namespace ApplicationCore.Services
             _configuration = configuration;
         }
 
-        public string GenerateToken(User User, Role Role)
+        public string GenerateToken(User user, Role role)
         {
             try
             {
                 var claims = new List<Claim>()
                 {
-                    new Claim(ClaimTypes.NameIdentifier, User.Id.ToString()),
-                    new Claim(ClaimTypes.Email, User.Email),
-                    new Claim(ClaimTypes.Role, Role.Name)
+                    new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+                    new Claim(ClaimTypes.Email, user.Email),
+                    new Claim(ClaimTypes.Role, role.Name)
                 };
 
                 var jwtSettings = _configuration.GetSection("JwtSettings");

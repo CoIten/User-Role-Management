@@ -22,5 +22,7 @@ namespace ApplicationCore.Models.Users
         [Required]
         [DataType(DataType.Password)]
         public string Password { get; set; }
+        [Required]
+        public int RoleId { get; set; }
     }
 }

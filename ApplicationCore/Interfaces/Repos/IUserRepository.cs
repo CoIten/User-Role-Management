@@ -12,8 +12,8 @@ namespace ApplicationCore.Interfaces.Repos
         public Task<User> GetUserById(int userId);
         public Task<List<User>> GetUsersAsync();
         public Task<User> GetUserByEmailAsync(string email);
-        public Task<User> CreateUser(User User);
-        public Task UpdateUser(User User);
-        public Task DeleteUser(User User);
+        public Task<User> CreateUser(User user);
+        public Task UpdateUser(User user);
+        public Task DeleteUser(User user);
     }
 }

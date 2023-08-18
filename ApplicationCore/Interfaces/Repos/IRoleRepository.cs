@@ -13,6 +13,6 @@ namespace ApplicationCore.Interfaces.Repos
         public Task<List<Role>> GetAllRoles();
         public Task<Role> CreateRole(Role role);
         public Task UpdateRole(Role role);
-        public Task DeleteRole(Role Role);
+        public Task DeleteRole(Role role);
     }
 }

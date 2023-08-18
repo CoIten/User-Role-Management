@@ -17,9 +17,17 @@ namespace Infrastructure.Implementations
         {
             _dbContext = dbContext;
         }
+
         public async Task<UserRole> GetUserRoleByUserIdAsync(int userId)
         {
             return await _dbContext.UserRoles.FirstOrDefaultAsync(u => u.UserId == userId);
+        }
+
+        public async Task<UserRole> CreateUserRoleAsync(UserRole userRole)
+        {
+            await _dbContext.UserRoles.AddAsync(userRole);
+            await _dbContext.SaveChangesAsync();
+            return userRole;
         }
     }
 }

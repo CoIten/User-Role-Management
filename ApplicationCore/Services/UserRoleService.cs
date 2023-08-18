@@ -21,5 +21,10 @@ namespace ApplicationCore.Services
         {
             return await _userRoleRepository.GetUserRoleByUserIdAsync(userId);
         }
+
+        public async Task<UserRole> CreateUserRoleAsync(UserRole userRole)
+        {
+            return await _userRoleRepository.CreateUserRoleAsync(userRole);
+        }
     }
 }

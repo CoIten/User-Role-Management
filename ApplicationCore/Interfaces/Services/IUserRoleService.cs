@@ -10,5 +10,6 @@ namespace ApplicationCore.Interfaces.Services
     public interface IUserRoleService
     {
         public Task<UserRole> GetUserRoleByUserIdAsync(int userId);
+        public Task<UserRole> CreateUserRoleAsync(UserRole userRole);
     }
 }

@@ -23,11 +23,11 @@ namespace ApplicationCore.Services
 
             return await _permissionRepository.GetPermissionById(permissionId);
         }
-        public void CreatePermission(Permission Permission)
+        public void CreatePermission(Permission permission)
         {
 
         }
-        public void UpdatePermission(Permission Permission)
+        public void UpdatePermission(Permission permission)
         {
 
         }

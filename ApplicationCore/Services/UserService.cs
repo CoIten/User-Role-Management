@@ -49,13 +49,21 @@ namespace ApplicationCore.Services
                 HashedPassword = hashedPasswordResult.HashedPassword
             };
             var createdUser = await _userRepository.CreateUser(user);
+            if (createdUser == null)
+            {
+                return null; // make proper responses later
+            }
 
             var userRole = new UserRole
             {
                 UserId = createdUser.Id,
                 RoleId = userRegistration.RoleId
             };
-            await _userRoleService.CreateUserRoleAsync(userRole);
+            var createdUserRole = await _userRoleService.CreateUserRoleAsync(userRole);
+            if (createdUserRole == null)
+            {
+                return null;
+            }
 
             return createdUser;
         }

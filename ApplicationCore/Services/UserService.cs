@@ -14,15 +14,15 @@ namespace ApplicationCore.Services
     public class UserService : IUserService
     {
         private readonly IUserRepository _userRepository;
-        private readonly IUserRoleRepository _userRoleRepository;
-        private readonly IRoleRepository _roleRepository;
+        private readonly IUserRoleService _userRoleService;
+        private readonly IRoleService _roleService;
         private readonly ITokenService _tokenService;
 
-        public UserService(IUserRepository userRepository, IUserRoleRepository userRoleRepository, IRoleRepository roleRepository, ITokenService tokenService)
+        public UserService(IUserRepository userRepository, IUserRoleService userRoleService, IRoleService roleService, ITokenService tokenService)
         {
             _userRepository = userRepository;
-            _userRoleRepository = userRoleRepository;
-            _roleRepository = roleRepository;
+            _userRoleService = userRoleService;
+            _roleService = roleService;
             _tokenService = tokenService;
         }
 
@@ -61,8 +61,8 @@ namespace ApplicationCore.Services
                 return null;
             }
 
-            var userRole = await _userRoleRepository.GetUserRoleByUserIdAsync(user.Id);
-            var role = await _roleRepository.GetRoleByIdAsync(userRole.RoleId);
+            var userRole = await _userRoleService.GetUserRoleByUserIdAsync(user.Id);
+            var role = await _roleService.GetRoleByIdAsync(userRole.RoleId);
 
             string token = _tokenService.GenerateToken(user, role);
             return token;

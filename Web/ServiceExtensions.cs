@@ -23,6 +23,7 @@ namespace Web
         {
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IRoleService, RoleService>();
+            services.AddScoped<IUserRoleService, UserRoleService>();
             services.AddScoped<IPermissionService, PermissionService>();
             services.AddScoped<ITokenService, TokenService>();
             return services;

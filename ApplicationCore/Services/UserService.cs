@@ -130,7 +130,7 @@ namespace ApplicationCore.Services
             };
         }
 
-        private class HashedPasswordResult
+        public class HashedPasswordResult
         {
             public string PasswordSalt { get; set; }
             public string HashedPassword { get; set; }

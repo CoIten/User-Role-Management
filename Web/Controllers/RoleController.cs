@@ -3,6 +3,7 @@ using ApplicationCore.Models.Roles;
 using ApplicationCore.Models.Users;
 using ApplicationCore.Services;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Web.DTOs.User;
@@ -11,6 +12,7 @@ namespace Web.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Roles = "Admin")]
     public class RoleController : ControllerBase
     {
         private readonly IRoleService _roleService;

@@ -11,6 +11,7 @@ using Web.DTOs.User;
 namespace Web.Controllers
 {
     [Route("api/[controller]")]
+    [Authorize]
     [ApiController]
     public class UserController : ControllerBase
     {
@@ -46,6 +47,7 @@ namespace Web.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult<UserDTO>> CreateUser([FromBody] UserPostDTO registrationDTO)
         {
             var userRegistration = _mapper.Map<UserPost>(registrationDTO);
@@ -55,6 +57,7 @@ namespace Web.Controllers
         }
 
         [HttpPost("login")]
+        [AllowAnonymous]
         public async Task<IActionResult> Login([FromBody] UserLoginDTO userLoginDTO)
         {
             var userLogin = _mapper.Map<UserLogin>(userLoginDTO);
@@ -67,6 +70,7 @@ namespace Web.Controllers
         }
 
         [HttpPut]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult<UserDTO>> UpdateUser([FromBody] UserUpdateDTO userUpdateDTO)
         {
             var userUpdate = _mapper.Map<UserUpdate>(userUpdateDTO);
@@ -76,7 +80,7 @@ namespace Web.Controllers
         }
 
         [HttpDelete("{userId}")]
-        [Authorize("AdminOnly")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> DeleteUser(int userId)
         {
             await _userService.DeleteUser(userId);
